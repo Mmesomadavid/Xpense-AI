@@ -29,12 +29,6 @@ export function Header({ currentPage }: HeaderProps) {
             Add Wallet
           </Button>
         )}
-        {currentPage === "wallets" && (
-          <Button size="sm" className="gap-2">
-            <Plus className="h-4 w-4" />
-            Add Transaction
-          </Button>
-        )}
         {currentPage === "categories" && (
           <Button size="sm" className="gap-2">
             <Plus className="h-4 w-4" />
