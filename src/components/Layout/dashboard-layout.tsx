@@ -1,37 +1,26 @@
 "use client"
 
-import { useState } from "react"
+import type { ReactNode } from "react"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
-import Dashboard from "../../pages/Dashboard"
-import Wallets from "../../pages/Wallets"
-import Categories from "../../pages/Categories"
-import Settings from "../../pages/Settings"
 
 export type PageType = "dashboard" | "wallets" | "categories" | "settings"
 
-export function DashboardLayout() {
-  const [currentPage, setCurrentPage] = useState<PageType>("dashboard")
+interface DashboardLayoutProps {
+  children: ReactNode
+  currentPage: PageType
+  onPageChange: React.Dispatch<React.SetStateAction<PageType>>
+}
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "dashboard":
-        return <Dashboard />
-      case "wallets":
-        return <Wallets />
-      case "categories":
-        return <Categories />
-      case "settings":
-        return <Settings />
-      default:
-        return <Dashboard />
-    }
-  }
-
+export function DashboardLayout({
+  children,
+  currentPage,
+  onPageChange,
+}: DashboardLayoutProps) {
   return (
     <div className="flex h-screen w-full overflow-hidden bg-background dark">
       {/* Sidebar */}
-      <Sidebar currentPage={currentPage} onPageChange={setCurrentPage} />
+      <Sidebar currentPage={currentPage} onPageChange={onPageChange} />
 
       {/* Main content area */}
       <div className="flex flex-1 flex-col overflow-hidden">
@@ -39,7 +28,7 @@ export function DashboardLayout() {
         <Header currentPage={currentPage} />
 
         {/* Content outlet */}
-        <main className="flex-1 overflow-auto p-6">{renderPage()}</main>
+        <main className="flex-1 overflow-auto p-6">{children}</main>
       </div>
     </div>
   )

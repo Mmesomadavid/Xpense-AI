@@ -12,7 +12,7 @@ export function TotalMoney() {
         {totals.map((total) => (
           <div
             key={total.currency}
-            className="flex items-center justify-between rounded-xl bg-zinc-900/60 p-5 hover:bg-zinc-900/80 transition-colors"
+            className="flex items-center justify-between rounded-xl bg-secondary p-5 hover:bg-zinc-900/80 transition-colors"
           >
             <p className="text-3xl font-semibold text-white">{total.amount}</p>
             <p className="text-xl font-medium text-white">{total.currency}</p>

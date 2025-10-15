@@ -44,7 +44,7 @@ export function Subscriptions() {
         {subscriptions.map((subscription) => (
           <div
             key={subscription.id}
-            className="flex items-center gap-3 rounded-xl bg-zinc-900/60 p-4 hover:bg-zinc-900/80 transition-colors"
+            className="flex items-center gap-3 rounded-xl bg-secondary p-4 hover:bg-zinc-900/80 transition-colors"
           >
             <div className={`flex h-9 w-9 items-center justify-center rounded-full ${subscription.iconBg}`}>
               <subscription.icon className={`h-4 w-4 ${subscription.iconColor}`} />

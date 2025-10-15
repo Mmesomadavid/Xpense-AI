@@ -3,7 +3,7 @@ import { ArrowUpDown, Briefcase, Tv } from "lucide-react"
 import { Button } from "./ui/button"
 import { MoreVertical } from "lucide-react"
 
-export function Transactions() {
+export function AllTransactions() {
   const transactions = [
     {
       id: 1,
@@ -42,13 +42,13 @@ export function Transactions() {
         {transactions.map((transaction) => (
           <div
             key={transaction.id}
-            className="flex items-center gap-3 rounded-xl bg-zinc-900/60 p-4 hover:bg-zinc-900/80 transition-colors"
+            className="flex items-center gap-3 rounded-xl bg-secondary p-4 hover:bg-zinc-900/80 transition-colors"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800/80">
-              <transaction.icon className="h-4 w-4 text-zinc-400" />
+              <transaction.icon className="h-6 w-6 text-zinc-400  " />
             </div>
             <div className="flex-1">
-              <p className={`text-base font-medium ${transaction.positive ? "text-green-400" : "text-white"}`}>
+              <p className={`text-2xl font-medium ${transaction.positive ? "text-green-400" : "text-white"}`}>
                 {transaction.amount}
               </p>
               <p className="text-sm text-zinc-500">{transaction.description}</p>

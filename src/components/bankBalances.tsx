@@ -10,9 +10,9 @@ export function BankBalances() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {balances.map((balance) => (
-        <Card key={balance.name} className="bg-zinc-900/80 border-zinc-800 p-5 hover:bg-zinc-900 transition-colors">
-          <p className="text-sm text-zinc-400 mb-2">{balance.name}</p>
-          <p className="text-2xl font-semibold text-white">
+        <Card key={balance.name} className="bg-secondary border-zinc-800 p-5 hover:bg-zinc-900 transition-colors rounded-2xl">
+          <p className="text-md text-zinc-400 mb-2">{balance.name}</p>
+          <p className="text-3xl font-semibold text-white">
             {balance.amount} {balance.currency}
           </p>
         </Card>
