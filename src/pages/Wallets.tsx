@@ -25,7 +25,7 @@ import {
   MoreHorizontal,
 } from "lucide-react"
 
-export default function Wallets() {
+const Wallets = () => {
   const transactions = [
     { date: "Jan 1, 2024", amount: "9.99 USD", description: "Netflix", icon: "netflix", type: "expense" },
     { date: "", amount: "25 USD", description: "Pizza", icon: "pizza", type: "expense" },
@@ -105,7 +105,6 @@ export default function Wallets() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-foreground">Bank of America (USD)</h1>
         <div className="flex items-center gap-2">
@@ -118,61 +117,65 @@ export default function Wallets() {
           <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
             <SettingsIcon className="h-4 w-4" />
           </Button>
-        </div>
-      </div>
-
-      {/* Top Stats */}
-      <div className="flex items-center gap-4">
-        <Button className="bg-white text-black hover:bg-white/90 font-medium">Add Transaction</Button>
-        <div className="flex items-center gap-6">
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Expected Balance</p>
-            <p className="text-xl font-semibold">4588.11 USD</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Days Before Salary</p>
-              <p className="text-xl font-semibold">6 days</p>
-            </div>
-            <Info className="h-4 w-4 text-muted-foreground" />
-          </div>
+          <Button className="bg-white text-black hover:bg-white/90 font-medium">Add Transaction</Button>
         </div>
       </div>
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Transactions List */}
+        {/* Left Column: Transactions Only */}
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="text-lg font-medium text-foreground">Transactions</h2>
-          <div className="space-y-3">
-            {transactions.map((transaction, index) => (
-              <div key={index}>
-                {transaction.date && <p className="text-sm text-muted-foreground mb-2">{transaction.date}</p>}
-                <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      {getTransactionIcon(transaction.icon)}
-                      <div>
-                        <p
-                          className={`text-base font-medium ${transaction.type === "income" ? "text-green-500" : "text-foreground"}`}
-                        >
-                          {transaction.amount}
-                        </p>
-                        <p className="text-sm text-muted-foreground">{transaction.description}</p>
+          {/* Transactions List */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-medium text-foreground">Transactions</h2>
+            <div className="space-y-3">
+              {transactions.map((transaction, index) => (
+                <div key={index}>
+                  {transaction.date && <p className="text-sm text-muted-foreground mb-2">{transaction.date}</p>}
+                  <Card className="bg-[#1a1a1a] border-[#2a2a2a] p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        {getTransactionIcon(transaction.icon)}
+                        <div>
+                          <p
+                            className={`text-base font-medium ${transaction.type === "income" ? "text-green-500" : "text-foreground"}`}
+                          >
+                            {transaction.amount}
+                          </p>
+                          <p className="text-sm text-muted-foreground">{transaction.description}</p>
+                        </div>
                       </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                      >
+                        <MoreVertical className="h-4 w-4" />
+                      </Button>
                     </div>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
-                      <MoreVertical className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </Card>
-              </div>
-            ))}
+                  </Card>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Right Sidebar */}
+        {/* Right Sidebar: Stats, Categories and Subscriptions */}
         <div className="space-y-6">
+          <div className="flex flex-col gap-4">
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">Expected Balance</p>
+              <p className="text-xl font-semibold">4588.11 USD</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Days Before Salary</p>
+                <p className="text-xl font-semibold">6 days</p>
+              </div>
+              <Info className="h-4 w-4 text-muted-foreground" />
+            </div>
+          </div>
+
           {/* Limits by Category */}
           <div>
             <div className="flex items-center justify-between mb-4">
@@ -249,3 +252,5 @@ export default function Wallets() {
     </div>
   )
 }
+
+export default Wallets
