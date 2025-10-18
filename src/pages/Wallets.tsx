@@ -126,7 +126,7 @@ const Wallets = () => {
         {/* Title and Add Transaction button row */}
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold text-foreground truncate" title="Bank of America (USD)">
-            {truncateText("Bank of America (USD)", 7)}
+            {truncateText("Bank of America (USD)", 10)}
           </h1>
           <Button className="bg-white text-black hover:bg-white/90 font-medium whitespace-nowrap">
             Add Transaction
