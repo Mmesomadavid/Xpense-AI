@@ -6,6 +6,7 @@ import type { ReactNode } from "react"
 import { useState } from "react"
 import { Sidebar } from "./Sidebar"
 import { Header } from "./Header"
+import { ScrollArea } from "../ui/scroll-area"
 
 export type PageType = "dashboard" | "wallets" | "categories" | "settings"
 
@@ -36,8 +37,9 @@ export function DashboardLayout({ children, currentPage, onPageChange }: Dashboa
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
 
-        {/* Content outlet */}
-        <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
+        <ScrollArea className="flex-1">
+          <main className="p-4 md:p-6">{children}</main>
+        </ScrollArea>
       </div>
     </div>
   )
