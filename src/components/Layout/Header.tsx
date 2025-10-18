@@ -22,7 +22,7 @@ export function Header({ currentPage, isMobileMenuOpen, setIsMobileMenuOpen }: H
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden">
           <Menu className="h-6 w-6 text-foreground" />
         </button>
-        <h2 className="text-xl md:text-2xl font-semibold text-foreground">{formatTitle(currentPage)}</h2>
+        <h2 className="text-xl md:text-2xl font-semibold text-foreground uppercase">{formatTitle(currentPage)}</h2>
       </div>
 
       <div className="flex items-center gap-2 md:gap-4">

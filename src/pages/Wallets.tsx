@@ -48,6 +48,10 @@ const Wallets = () => {
     { name: "Netflix", amount: "9.99 USD", icon: "check", color: "bg-green-500" },
   ]
 
+  const truncateText = (text: string, maxLength: number) => {
+    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text
+  }
+
   const getTransactionIcon = (icon: string) => {
     const iconMap: Record<string, React.ReactNode> = {
       netflix: (
@@ -105,9 +109,9 @@ const Wallets = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-foreground">Bank of America (USD)</h1>
-        <div className="flex items-center gap-2">
+      <div className="space-y-3">
+        {/* Icons row - positioned on the right */}
+        <div className="flex justify-end gap-2">
           <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
             <Search className="h-4 w-4" />
           </Button>
@@ -117,7 +121,16 @@ const Wallets = () => {
           <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
             <SettingsIcon className="h-4 w-4" />
           </Button>
-          <Button className="bg-white text-black hover:bg-white/90 font-medium">Add Transaction</Button>
+        </div>
+
+        {/* Title and Add Transaction button row */}
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-2xl font-semibold text-foreground truncate" title="Bank of America (USD)">
+            {truncateText("Bank of America (USD)", 7)}
+          </h1>
+          <Button className="bg-white text-black hover:bg-white/90 font-medium whitespace-nowrap">
+            Add Transaction
+          </Button>
         </div>
       </div>
 
@@ -162,17 +175,17 @@ const Wallets = () => {
 
         {/* Right Sidebar: Stats, Categories and Subscriptions */}
         <div className="space-y-6">
-          <div className="flex flex-col gap-4">
-            <div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
               <p className="text-sm text-muted-foreground mb-1">Expected Balance</p>
               <p className="text-xl font-semibold">4588.11 USD</p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex-1 flex items-start gap-2">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Days Before Salary</p>
                 <p className="text-xl font-semibold">6 days</p>
               </div>
-              <Info className="h-4 w-4 text-muted-foreground" />
+              <Info className="h-4 w-4 text-muted-foreground mt-6" />
             </div>
           </div>
 
@@ -253,4 +266,4 @@ const Wallets = () => {
   )
 }
 
-export default Wallets
+export default Wallets;
